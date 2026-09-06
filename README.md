@@ -33,3 +33,6 @@ Google sign-in and bank connections are not implemented. Financial amounts and l
 
 ## Repository contents
 Source and dependency lockfile only. Personal wallet records, local databases, credentials, dependencies, and compiled output are excluded.
+
+## GitHub Pages
+The static build is prepared for `/bloom/`. Run `npx vite build --config pages.vite.config.ts`, then copy the contents of `dist-pages/` into `docs/` and retain `docs/.nojekyll`. Configure GitHub Pages to deploy from `main` and `/docs` when the repository plan and visibility allow it. The Pages build contains no server endpoint or database binding. Its browser storage is separate from the original Sites URL; transfer data using backup and restore.

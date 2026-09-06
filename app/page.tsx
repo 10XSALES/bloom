@@ -57,7 +57,7 @@ export default function Home(){
  const min=Math.min(0,...f.points.map(p=>p.cash)),max=Math.max(1,...f.points.map(p=>p.cash)),y=(v:number)=>160-(v-min)/(max-min)*135;
  const line=f.points.map((p,i)=>String(i/(f.points.length-1)*800)+','+y(p.cash)).join(' ');
  return <main className="shell">
- <header><a className="brand" href="/"><Sprout/> bloom<span>MONEY & POSSIBILITY</span></a><span className="badge"><span className="dot"/> Saved on this device</span></header>
+ <header><a className="brand" href="./"><Sprout/> bloom<span>MONEY & POSSIBILITY</span></a><span className="badge"><span className="dot"/> Saved on this device</span></header>
  <section className="heading"><div><p className="eyebrow">DREAM IT. PLAN IT. GROW INTO IT.</p><h1>Make room for your future.</h1><p>Your goals, with a clear plan to get there.</p></div><button className="primary" disabled={busy} onClick={()=>open('goal')}><Plus size={18}/> Create a goal <ArrowUpRight size={16}/></button></section>
  {demo&&<div className="demo"><span><strong>You’re exploring a sample wallet.</strong> Try it, or start fresh with your own numbers.</span><div><button disabled={busy} onClick={()=>save(s)}>Keep sample</button><button className="primary" disabled={busy} onClick={()=>save({...s,accounts:[],routines:[],goals:[],reviews:[],loans:[],debtExtra:0,asOf:today()})}>Start fresh <ArrowRight size={15}/></button></div></div>}
  {!editor&&error&&<div className="error" role="alert">{error} <button onClick={load}>Reload wallet</button></div>}
