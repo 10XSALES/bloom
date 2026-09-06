@@ -6,7 +6,7 @@ A vision-first web app for turning personal goals into a practical money plan.
 - Vision board with goals, target dates, inspiration images, and linked savings funds.
 - Accounts, recurring income and expenses, and cash projections.
 - Loan payoff comparisons and payday reviews.
-- Device-local saving, JSON backup and restore, and optional migration from the original online wallet.
+- Device-local saving, JSON backup and restore,.
 
 ## Run locally
 Requires Node.js 22.13 or later and npm.
@@ -26,8 +26,8 @@ npm run build
 
 Built with React, TypeScript, Vinext, Tailwind CSS, and Cloudflare Workers. The existing Sites deployment uses the project mapping in `.openai/hosting.json`. Do not reuse that mapping for an unrelated deployment.
 
-## Optional legacy database
-The `/api/wallet` endpoint supports copying the original owner-private online wallet onto this device. It requires the Cloudflare D1 `DB` binding and the migration in `drizzle/`. Normal goal creation and local saving do not require this endpoint. The legacy endpoint uses one shared wallet and must remain behind owner-only access; it is not a multi-user backend.
+## Public demo privacy
+The legacy `/api/wallet` endpoint returns 410 and cannot read or write stored data. Each visitor uses their own browser storage. No shared wallet or sign-in is enabled.
 
 Google sign-in and bank connections are not implemented. Financial amounts and loan projections are manually entered estimates.
 
