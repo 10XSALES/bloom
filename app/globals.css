@@ -79,3 +79,4 @@ html{scroll-padding-top:16px}img,svg{max-width:100%}.shell,.workspace-tabs,[data
 }
 @media(max-width:360px){.insight-totals{grid-template-columns:1fr}.vision .section-title{flex-wrap:wrap}.vision .section-title>button{width:100%}.goal-progress>div:first-child{flex-wrap:wrap}}
 @media(max-width:760px){.editor[data-slot=dialog-content]{position:fixed!important;left:12px!important;top:12px!important;right:auto!important;bottom:auto!important;transform:none!important;translate:none!important;margin:0!important}}
+.profile-choice{display:grid;gap:10px;width:min(100%,340px);text-align:left;margin:20px 0 8px;font-size:14px}.profile-choice .pick{min-height:48px}

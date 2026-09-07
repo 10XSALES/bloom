@@ -3,7 +3,7 @@ export type Routine={id:string;name:string;kind:'income'|'expense'|'transfer';am
 export type Goal={id:string;title:string;why:string;target:number;accountId:string;deadline:string;imageUrl?:string;tone:number};
 export type Review={id:string;date:string;cash:number;savings:number;note:string};
 export type Loan={debtType?:'loan'|'credit_card';id:string;name:string;balance:number;apr:number;payment:number;dueDay:number;accountId:string};
-export type State={currency:string;asOf:string;accounts:Account[];routines:Routine[];goals:Goal[];reviews:Review[];loans?:Loan[];debtExtra?:number};
+export type State={profile?:'student'|'general';currency:string;asOf:string;accounts:Account[];routines:Routine[];goals:Goal[];reviews:Review[];loans?:Loan[];debtExtra?:number};
 export const today=()=>{const d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-')};
 export const parse=(s:string)=>new Date(s+'T12:00:00Z');
 export const iso=(d:Date)=>d.toISOString().slice(0,10);
@@ -61,7 +61,7 @@ export function sample():State{
  ],goals:[{id:'g1',title:'Room to breathe',why:'Build a cushion for life’s surprises.',target:100000,accountId:'rainy',deadline:addDays(date,240),tone:0},{id:'g2',title:'A change of scenery',why:'Two weeks of discovery in Japan.',target:80000,accountId:'travel',deadline:addDays(date,300),tone:1},{id:'g3',title:'Create something of my own',why:'A space to turn ideas into something real.',target:50000,accountId:'studio',deadline:addDays(date,365),tone:2}],reviews:[]};
 }
 export function validState(s:any):s is State{
- if(!s||!['PHP','USD','EUR','GBP'].includes(s.currency)||!validDate(s.asOf))return false;
+ if(!s||(s.profile!==undefined&&!['student','general'].includes(s.profile))||!['PHP','USD','EUR','GBP'].includes(s.currency)||!validDate(s.asOf))return false;
  if(!['accounts','routines','goals','reviews'].every(k=>Array.isArray(s[k])&&s[k].length<=500))return false;
  const text=(x:any)=>typeof x==='string'&&x.length<=500;
  const money=(n:any)=>typeof n==='number'&&Number.isFinite(n)&&Math.abs(n)<=1e12;
